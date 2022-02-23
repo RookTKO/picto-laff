@@ -19,7 +19,6 @@ export default function Board() {
             grid.push([]);
             for (let j = 0; j < 10; j++) {
                 grid[i][j] = initBlock(i, j)
-                //console.log('grid[i][j]',grid[i][j])
             }
         }
 
@@ -29,17 +28,13 @@ export default function Board() {
     const [board, setBoard] = useState(initBoard());
 
     const onClickHandler = (node, e) => {
-        console.log(e)
+
+        //assign ux class so user can tell which blocks are selected
         e.target.className = 'selected'
-        // console.log('this is my x:', node.x)
-        // console.log('this is my x:', node.y)
-        // console.log('current node', node)
-        // console.log('current choice',currentChoices )
-        // console.log('this is stuff', [node, ...currentChoices])
-        // console.log('this is len', currentChoices.length)
+
         //if player has made choices previously
         if (currentChoices.length) {
-            //console.log('is this true', currentChoices.filter(v => v === node).length)
+
 
             //if player is selecting a block that has not been chosen before
             if (!currentChoices.filter(v => v === node).length) {
@@ -52,8 +47,7 @@ export default function Board() {
                 }
                 else if (currentChoices.length >= 2) {
                     //iterate through each one and move everything from top down and set top one to isDead: true
-                    //console.log('test')
-                    //console.log('choices test', currentChoices)
+
                     currentChoices.sort((a, b) => {
 
                         if (a.y > b.y) {
@@ -61,7 +55,7 @@ export default function Board() {
                         }
                         return -1
                     })
-                    //console.log('choices test afterwars', currentChoices)
+
                     let boardCopy = board;
                     for (let i = 0; i < currentChoices.length; i++) {
                         let choiceX = currentChoices[i].x
@@ -99,43 +93,33 @@ export default function Board() {
 
                     let oldChoices = document.getElementsByClassName('selected')
 
-                    while(oldChoices.length){
+                    while (oldChoices.length) {
                         oldChoices[0].classList.remove('selected')
                     }
 
                     setCurrentChoices([])
+                    setMoves(moves - 1)
                 } else {
                     let oldChoices = document.getElementsByClassName('selected')
-                    while(oldChoices.length){
+                    while (oldChoices.length) {
                         oldChoices[0].classList.remove('selected')
                     }
                     setCurrentChoices([])
                 }
 
-                //console.log('this is what it is now: , ' ,currentChoices)
+
             }
-
-
-
-            //console.log(currentChoices)
         }
         else {
             setCurrentChoices(value => [node, ...value])
         }
     }
 
-    // useEffect(() => {
-    //     setBoard(initBoard)
-    // }, [])
-
-    // useEffect(() => {
-    //     renderBoardData(board)
-    // }, [board])
 
     let renderBoardData = (board) => {
         return board.map(col => {
             return col.map(node => {
-                // console.log(node)
+
                 return (
                     <Fragment>
                         <Block
@@ -147,7 +131,7 @@ export default function Board() {
                 )
             })
         })
-        //return board
+
     }
     console.log('here', board)
     return (
@@ -172,22 +156,32 @@ export default function Board() {
                     <li> Upon removal of the group of matching blocks, the space should be filled by the remaining blocks above shifting downward.</li>
                 </ol>
 
-
+                <p>Current moves left: {moves}</p>
             </div>
-            <div style={{
-                height: '100%'
-            }}>
+            {moves ?
+                <>
+                    <div style={{
+                        height: '100%'
+                    }}>
+                        <div style={{
+                            height: '100%',
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(10, 5rem)',
+                            gridTemplateRows: 'repeat(10, 5rem)',
+                            placeContent: 'center',
+                            gap: '1%',
+                            margin: '0 auto',
+
+                        }}>{board && renderBoardData(board)}</div>
+                    </div>
+
+                </> :
                 <div style={{
-                    height: '100%',
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(10, 5rem)',
-                    gridTemplateRows: 'repeat(10, 5rem)',
-                    placeContent: 'center',
-                    gap: '1%',
-                    margin: '0 auto',
-
-                }}>{board && renderBoardData(board)}</div>
-            </div>
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    fontSize: '42px'
+                }}>Game over!</div>}
 
         </>
     )
