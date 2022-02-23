@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/RookTKO/picto-laff/static/css/main.0f533de4.css",
-    "main.js": "/RookTKO/picto-laff/static/js/main.8f8ff1fa.js",
-    "static/js/787.28cb0dcd.chunk.js": "/RookTKO/picto-laff/static/js/787.28cb0dcd.chunk.js",
-    "index.html": "/RookTKO/picto-laff/index.html",
-    "main.0f533de4.css.map": "/RookTKO/picto-laff/static/css/main.0f533de4.css.map",
-    "main.8f8ff1fa.js.map": "/RookTKO/picto-laff/static/js/main.8f8ff1fa.js.map",
-    "787.28cb0dcd.chunk.js.map": "/RookTKO/picto-laff/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/picto-laff/static/css/main.0f533de4.css",
+    "main.js": "/picto-laff/static/js/main.3bb3c837.js",
+    "static/js/787.28cb0dcd.chunk.js": "/picto-laff/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/picto-laff/index.html",
+    "main.0f533de4.css.map": "/picto-laff/static/css/main.0f533de4.css.map",
+    "main.3bb3c837.js.map": "/picto-laff/static/js/main.3bb3c837.js.map",
+    "787.28cb0dcd.chunk.js.map": "/picto-laff/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0f533de4.css",
-    "static/js/main.8f8ff1fa.js"
+    "static/js/main.3bb3c837.js"
   ]
 }
